@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcmii7wpj6iqk"]
+
+[ext_resource type="Script" path="res://Scripts/MenuScripts/menu.gd" id="1_mbrqd"]
+[ext_resource type="FontFile" uid="uid://by827vv0l31gc" path="res://Font/joystix monospace.otf" id="2_sfhi1"]
+[ext_resource type="Texture2D" uid="uid://vkxbyhoyy3ti" path="res://Img/ForestBG.png" id="3_7necu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kqbie"]
+texture = ExtResource("3_7necu")
+modulate_color = Color(1, 1, 1, 0.580392)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mbrqd")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_kqbie")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -267.5
+offset_top = 66.0
+offset_right = 267.5
+offset_bottom = 110.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.411765, 0.294118, 0.215686, 1)
+theme_override_colors/font_shadow_color = Color(0.411765, 0.294118, 0.215686, 1)
+theme_override_colors/font_outline_color = Color(0, 0.941176, 0, 1)
+theme_override_fonts/font = ExtResource("2_sfhi1")
+theme_override_font_sizes/font_size = 36
+text = " Tanuki Adventures"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -46.0
+offset_right = 72.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_hover_color = Color(0.411765, 0.294118, 0.215686, 1)
+theme_override_fonts/font = ExtResource("2_sfhi1")
+text = " New Game　"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.411765, 0.294118, 0.215686, 1)
+theme_override_fonts/font = ExtResource("2_sfhi1")
+text = "Options
+"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.411765, 0.294118, 0.215686, 1)
+theme_override_colors/icon_hover_color = Color(0.419608, 0.258824, 0.0470588, 0.741176)
+theme_override_fonts/font = ExtResource("2_sfhi1")
+text = "Quit Game"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
