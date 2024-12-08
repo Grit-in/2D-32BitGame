@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5sfehky4euoi"
-path="res://.godot/imported/LoadBorderTop.png-b2fd79715658a45387041086be90969a.ctex"
+uid="uid://vkxbyhoyy3ti"
+path="res://.godot/imported/ForestBG.png-f2c641701c62dbdbcfab6262b1400fde.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Img/LoadBorderTop.png"
-dest_files=["res://.godot/imported/LoadBorderTop.png-b2fd79715658a45387041086be90969a.ctex"]
+source_file="res://Img/BG/ForestBG.png"
+dest_files=["res://.godot/imported/ForestBG.png-f2c641701c62dbdbcfab6262b1400fde.ctex"]
 
 [params]
 

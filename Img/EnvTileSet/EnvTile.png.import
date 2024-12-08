@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgy2mnflfwxo"
-path="res://.godot/imported/LoadBorderBottom.png-b42d4cf2cfadcf5812c6bb139ee8a4a0.ctex"
+uid="uid://b4w373mp01swl"
+path="res://.godot/imported/EnvTile.png-d085fa2767b82a11752f71ca6fda1748.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Img/LoadBorderBottom.png"
-dest_files=["res://.godot/imported/LoadBorderBottom.png-b42d4cf2cfadcf5812c6bb139ee8a4a0.ctex"]
+source_file="res://Img/EnvTileSet/EnvTile.png"
+dest_files=["res://.godot/imported/EnvTile.png-d085fa2767b82a11752f71ca6fda1748.ctex"]
 
 [params]
 

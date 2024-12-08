@@ -1,12 +1,77 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcmii7wpj6iqk"]
+[gd_scene load_steps=14 format=3 uid="uid://dcmii7wpj6iqk"]
 
 [ext_resource type="Script" path="res://Scripts/MenuScripts/menu.gd" id="1_mbrqd"]
 [ext_resource type="FontFile" uid="uid://by827vv0l31gc" path="res://Font/joystix monospace.otf" id="2_sfhi1"]
-[ext_resource type="Texture2D" uid="uid://vkxbyhoyy3ti" path="res://Img/ForestBG.png" id="3_7necu"]
+[ext_resource type="Texture2D" uid="uid://vkxbyhoyy3ti" path="res://Img/BG/ForestBG.png" id="3_7necu"]
+[ext_resource type="Texture2D" uid="uid://b8obl3b0r07ni" path="res://Img/Player/fox.png" id="4_a4tv2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kqbie"]
 texture = ExtResource("3_7necu")
 modulate_color = Color(1, 1, 1, 0.580392)
+
+[sub_resource type="GDScript" id="GDScript_2lbqi"]
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c4ww"]
+atlas = ExtResource("4_a4tv2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48le0"]
+atlas = ExtResource("4_a4tv2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asylp"]
+atlas = ExtResource("4_a4tv2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1vgwy"]
+atlas = ExtResource("4_a4tv2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3s600"]
+atlas = ExtResource("4_a4tv2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oey7i"]
+atlas = ExtResource("4_a4tv2")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dw80h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c4ww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48le0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asylp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1vgwy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3s600")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oey7i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -22,6 +87,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_kqbie")
@@ -77,5 +144,14 @@ theme_override_colors/font_hover_color = Color(0.411765, 0.294118, 0.215686, 1)
 theme_override_colors/icon_hover_color = Color(0.419608, 0.258824, 0.0470588, 0.741176)
 theme_override_fonts/font = ExtResource("2_sfhi1")
 text = "Quit Game"
+script = SubResource("GDScript_2lbqi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(87, 380)
+scale = Vector2(8.03125, 7.5)
+sprite_frames = SubResource("SpriteFrames_dw80h")
+autoplay = "default"
+frame_progress = 0.113491
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

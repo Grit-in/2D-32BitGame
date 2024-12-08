@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mroe3e8gd3sp"
-path="res://.godot/imported/bg.png-1f58dc0fd67767461e47c81600fa1d89.ctex"
+uid="uid://cwewha605yr4f"
+path="res://.godot/imported/RaccoonDog.png-fc7ec7562ef22047ce7b89c80aa72604.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Img/bg.png"
-dest_files=["res://.godot/imported/bg.png-1f58dc0fd67767461e47c81600fa1d89.ctex"]
+source_file="res://Img/Enemy/RaccoonDog.png"
+dest_files=["res://.godot/imported/RaccoonDog.png-fc7ec7562ef22047ce7b89c80aa72604.ctex"]
 
 [params]
 

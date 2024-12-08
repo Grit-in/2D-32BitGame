@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c01rrwj0d7c77"
-path="res://.godot/imported/LoadBorder.png-9556dc5f65ff4b4cd005ac30c1652b9b.ctex"
+uid="uid://bi0y73qi7p8uo"
+path="res://.godot/imported/foxleft.png-e10227a675d6afd1d1bbca7606ec3037.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Img/LoadBorder.png"
-dest_files=["res://.godot/imported/LoadBorder.png-9556dc5f65ff4b4cd005ac30c1652b9b.ctex"]
+source_file="res://Img/Player/foxleft.png"
+dest_files=["res://.godot/imported/foxleft.png-e10227a675d6afd1d1bbca7606ec3037.ctex"]
 
 [params]
 
