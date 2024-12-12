@@ -6,3 +6,5 @@ extends Resource
 @export var right := "move_right"
 @export var jump := "move_jump"
 @export var down := "move_down"
+@export var dash := "dash"
+@export var attack := "attack"

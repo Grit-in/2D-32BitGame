@@ -322,7 +322,7 @@ position = Vector2(-1, -6)
 sprite_frames = SubResource("SpriteFrames_e2a6h")
 animation = &"Attack"
 autoplay = "Idle"
-frame_progress = 0.00398078
+frame_progress = 0.517595
 
 [node name="PlayerHurtBox2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2cqxs")
