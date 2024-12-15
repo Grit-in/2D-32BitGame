@@ -1,43 +1,39 @@
-class_name PlayerInput
+class_name PlayerInputStateMachine
 extends Node
 
 @export var character : UniversalEntity
-@export var actions : PlayerInputActions
-enum State {IDLE,WALK,JUMP,DASH,ATTACK}
+@export var current_state : State
+@export var animation_tree : AnimationTree
+var states : Array[State]
 
-func _process(_delta: float) -> void:
+func _ready():
+	for child in get_children():
+		if child is State:
+			states.append(child)
+			
+			child.character = character
+			child.playback = animation_tree["parameters/playback"]
+			
+		else:
+			push_warning("Child " + child.name +  " is not a state")
+			
+func _physics_process(delta):
+	if current_state.next_state != null:
+		switch_states(current_state.next_state)
 	
-	character.direction = Input.get_vector(actions.left,actions.right,actions.jump,actions.down)
-	
-	
-	#if you hold jump
-	if Input.is_action_pressed(actions.jump):
-		character.current_state = character.State.JUMP
-		character.state_changed.emit(character.current_state)
-		character.try_jump()
-	
-	if Input.is_action_pressed(actions.left) or Input.is_action_pressed(actions.right):
-		character.current_state = character.State.WALK
-		character.state_changed.emit(character.current_state)
-		character.direction_changed.emit(character.direction)
+	current_state.state_process(delta)
 
-# Function for calling player functions on click
-func _unhandled_input(event: InputEvent) -> void:
+func check_if_can_move():
+	return current_state.can_move
+
+func switch_states(new_state : State):
+	if current_state != null:
+		current_state.on_exit()
+		current_state.next_state = null
+		
+	current_state = new_state
 	
-	#if you tap jump
-	if event.is_action_pressed(actions.jump):
-		character.current_state = character.State.JUMP
-		character.state_changed.emit(character.current_state)
-		character.try_jump()
-		
-	if event.is_action_pressed(actions.dash):
-		character.current_state = character.State.DASH
-		character.state_changed.emit(character.current_state)
-		character.try_dash()
-		
-	if event.is_action_pressed(actions.attack):
-		character.current_state = character.State.ATTACK
-		character.state_changed.emit(character.current_state)
-		character.try_attack()
-		
-		
+	current_state.on_enter()
+
+func _input(event : InputEvent):
+	current_state.state_input(event)
