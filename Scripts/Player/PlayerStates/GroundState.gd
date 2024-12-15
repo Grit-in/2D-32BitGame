@@ -8,8 +8,9 @@ var player : Player
 var jumped := false
 @export var air_state : AirState
 @export var jump_animation : String = "jump"
+@onready var ct : Timer = $"../$Timers/Coyote"
 
-func state_process(delta):
+func state_process(_delta):
 	if !character.is_on_floor():
 		next_state = air_state
 
