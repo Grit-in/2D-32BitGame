@@ -5,8 +5,13 @@ extends Node
 @export var current_state : State
 @export var animation_tree : AnimationTree
 var states : Array[State]
+@export_category("timers")
+@onready var dcd : Timer = $Timers/DashCooldown
+@export_range(0.1,2) var dash_cooldown := 1.5
 
 func _ready():
+	dcd.wait_time = dash_cooldown
+	
 	for child in get_children():
 		if child is State:
 			states.append(child)

@@ -583,7 +583,7 @@ shape = SubResource("WorldBoundaryShape2D_oh1nu")
 
 [node name="Player" parent="Entities" instance=ExtResource("1_0d1hs")]
 texture_filter = 1
-position = Vector2(171, 388)
+position = Vector2(171, 390)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

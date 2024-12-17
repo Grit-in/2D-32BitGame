@@ -13,29 +13,17 @@ extends UniversalEntity
 @onready var state_machine : PlayerInputStateMachine =  $PlayerInput
 
 
-@onready var ct : Timer = $Timers/Coyote
-@onready var jb : Timer = $Timers/JumpBuffer
-@onready var dcd : Timer = $Timers/DashCooldown
 
 
 @export_category("dash_vars")
 var dash := false
 @export var dash_distance := 300
 
-@export_category("timers")
-@export_range(0.1,2) var dash_cooldown := 1.5
-@export_range(0.1,2) var coyote_timer := 0.15
-@export_range(0.1,2) var jump_buffer := 0.2
-
 var direction : Vector2 = Vector2.ZERO
 
 func _ready():
 	
 	animation_tree.active = true
-	ct.wait_time = coyote_timer
-	jb.wait_time = jump_buffer
-	dcd.wait_time = dash_cooldown
-	
 # delta is the current frame time aka at 30FPS ≈ 1/30 ≈ 0.0333s etc.
 func _physics_process(delta: float) -> void:
 	#BG COLOR
@@ -49,8 +37,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, direction.x * speed, acceleration * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, friction * delta)
-		
-	move_and_slide()
+	
+	
+	move_and_slide()	
 	update_animation_parameters()
 	update_facing_side()
 	
