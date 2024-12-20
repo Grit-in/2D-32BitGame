@@ -49,4 +49,4 @@ func update_facing_side():
 		sprite.flip_h = direction.x < 0
 		
 func update_animation_parameters():
-	animation_tree.set("parameters/Move/blend_position", direction.x)
+	animation_tree.set("parameters/move/blend_position", direction.x)
