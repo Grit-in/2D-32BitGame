@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://mg8x8liv72k8"]
+
+[ext_resource type="FontFile" uid="uid://by827vv0l31gc" path="res://Font/joystix monospace.otf" id="1_x30ga"]
+[ext_resource type="Script" path="res://Scripts/Player/Ui/hp_changed.gd" id="2_gqya6"]
+
+[node name="PlayerHealth" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_x30ga")
+text = "1000"
+script = ExtResource("2_gqya6")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://dk1q7n2pmy38i"]
+[gd_scene load_steps=12 format=4 uid="uid://dk1q7n2pmy38i"]
 
 [ext_resource type="PackedScene" uid="uid://cc7dfj6y74mtv" path="res://Scenes/Character/player.tscn" id="1_0d1hs"]
 [ext_resource type="Texture2D" uid="uid://b4w373mp01swl" path="res://Img/EnvTileSet/EnvTile.png" id="1_qelar"]
 [ext_resource type="Script" path="res://Scripts/MenuScripts/fps_counter.gd" id="3_53jsc"]
 [ext_resource type="PackedScene" uid="uid://culc5ybvg43f6" path="res://Scenes/Enemy/GhostYokai.tscn" id="3_lpe4x"]
+[ext_resource type="PackedScene" uid="uid://dwoklv40p4uuq" path="res://Scenes/player_health.tscn" id="5_ao44l"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t1oge"]
 
@@ -584,12 +585,13 @@ shape = SubResource("WorldBoundaryShape2D_oh1nu")
 
 [node name="Player" parent="Entities" instance=ExtResource("1_0d1hs")]
 texture_filter = 1
-position = Vector2(181, 395)
+position = Vector2(245, 387)
 
 [node name="Enemies" type="Node2D" parent="Entities"]
 
 [node name="Ghost" parent="Entities/Enemies" instance=ExtResource("3_lpe4x")]
-position = Vector2(212, 387)
+visible = true
+position = Vector2(122, 387)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -612,3 +614,5 @@ offset_right = 104.8
 offset_bottom = 87.52
 script = ExtResource("3_53jsc")
 metadata/_edit_use_anchors_ = true
+
+[node name="PlayerHealth" parent="UI/CanvasLayer" instance=ExtResource("5_ao44l")]

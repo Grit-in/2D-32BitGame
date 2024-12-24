@@ -11,6 +11,7 @@ extends UniversalEntity
 @onready var animation_tree : AnimationTree = $Animations/AnimationTree
 @onready var sprite : Sprite2D = $Animations/Sprite2D
 @onready var state_machine : PlayerInputStateMachine =  $PlayerInput
+@onready var hitbox : Marker2D = $HitboxMarker
 
 
 
@@ -45,8 +46,10 @@ func _physics_process(delta: float) -> void:
 	
 
 func update_facing_side():
-	if direction.x:
-		sprite.flip_h = direction.x < 0
+	if direction.x >= 0:
+		sprite.flip_h = false
+	else:
+		sprite.flip_h = true
 		
 func update_animation_parameters():
 	animation_tree.set("parameters/move/blend_position", direction.x)

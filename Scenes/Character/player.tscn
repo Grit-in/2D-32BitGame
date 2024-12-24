@@ -893,7 +893,6 @@ position = Vector2(1, -2)
 shape = SubResource("CapsuleShape2D_w7jng")
 
 [node name="Animations" type="Node2D" parent="."]
-scale = Vector2(1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Animations"]
 offset = Vector2(0, -8)
