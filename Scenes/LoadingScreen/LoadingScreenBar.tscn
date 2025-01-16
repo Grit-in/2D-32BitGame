@@ -1,0 +1,187 @@
+[gd_scene load_steps=20 format=3 uid="uid://ujxiqcvh0rdd"]
+
+[ext_resource type="Script" path="res://Scripts/MenuScripts/loading_screen_bar.gd" id="1_s4tcg"]
+[ext_resource type="Texture2D" uid="uid://del2la8hl0d08" path="res://Img/Ui/Loading.png" id="1_xotpt"]
+[ext_resource type="FontFile" uid="uid://by827vv0l31gc" path="res://Font/joystix monospace.otf" id="3_5ohjd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x81df"]
+atlas = ExtResource("1_xotpt")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28nww"]
+atlas = ExtResource("1_xotpt")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5bdw"]
+atlas = ExtResource("1_xotpt")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28ja5"]
+atlas = ExtResource("1_xotpt")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enhs3"]
+atlas = ExtResource("1_xotpt")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ts4p2"]
+atlas = ExtResource("1_xotpt")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cemx"]
+atlas = ExtResource("1_xotpt")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_riodi"]
+atlas = ExtResource("1_xotpt")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7732"]
+atlas = ExtResource("1_xotpt")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_filae"]
+atlas = ExtResource("1_xotpt")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8f642"]
+atlas = ExtResource("1_xotpt")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pvnw"]
+atlas = ExtResource("1_xotpt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qg45n"]
+atlas = ExtResource("1_xotpt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lqvt"]
+atlas = ExtResource("1_xotpt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2tmn"]
+atlas = ExtResource("1_xotpt")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_brevs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x81df")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28nww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5bdw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28ja5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enhs3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ts4p2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cemx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_riodi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7732")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_filae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8f642")
+}],
+"loop": true,
+"name": &"loop",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_3pvnw")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_qg45n")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_4lqvt")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_e2tmn")
+}],
+"loop": false,
+"name": &"start",
+"speed": 15.0
+}]
+
+[node name="LSB" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s4tcg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(721.75, 531.25)
+scale = Vector2(4.85937, 4.26563)
+sprite_frames = SubResource("SpriteFrames_brevs")
+animation = &"loop"
+autoplay = "start"
+frame_progress = 0.0835688
+
+[node name="Countdown" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -301.0
+offset_top = -126.0
+offset_right = -202.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_5ohjd")
+theme_override_font_sizes/font_size = 60
+text = "0%"
+
+[node name="Delay" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -286.0
+offset_top = -20.0
+offset_right = 279.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="timeout" from="Delay" to="." method="_on_delay_timeout"]

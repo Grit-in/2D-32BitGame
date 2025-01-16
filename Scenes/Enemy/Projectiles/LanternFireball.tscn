@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://chsfe5ekk3gga"]
+
+[ext_resource type="Script" path="res://Scripts/Entity/EnemyStatesTest/lantern_fireball.gd" id="1_jlthg"]
+[ext_resource type="Texture2D" uid="uid://dyhmcc03dclgt" path="res://Img/Enemy/Projectiles/LanternProjectile.png" id="2_4c4hx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sui8"]
+atlas = ExtResource("2_4c4hx")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xeft3"]
+atlas = ExtResource("2_4c4hx")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8kjua"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sui8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xeft3")
+}],
+"loop": true,
+"name": &"bullet",
+"speed": 5.0
+}]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_jlthg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -5)
+sprite_frames = SubResource("SpriteFrames_8kjua")
+animation = &"bullet"
+autoplay = "bullet"
+frame_progress = 0.862582
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1, -3)
+scale = Vector2(0.45, 0.5)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

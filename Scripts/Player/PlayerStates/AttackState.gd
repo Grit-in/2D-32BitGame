@@ -20,16 +20,14 @@ func _ready():
 func state_input(event : InputEvent):
 	if event.is_action_pressed("attack"):
 		ab.start()
-	
+		
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name == attack_ground:
 		if ab.is_stopped():
 			next_state = ground_state
-			playback.travel("move")
 		else:
 			playback.travel(attack_follow)
 	elif anim_name == attack_follow:
 		next_state = ground_state
-		playback.travel("move")
 	elif anim_name == attack_air:
 		next_state = air_state

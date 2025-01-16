@@ -1,24 +1,25 @@
-extends Node
+extends Node2D
 class_name EnemyState
+#Abstract state class
 
-@export var can_move : bool = true
-@export var character : UniversalEntity
-var playback : AnimationNodeStateMachinePlayback
-var next_state : EnemyState
+@export var player_cast : RayCast2D
+@export var debugger : Label
+@onready var players = get_tree().get_nodes_in_group("Players")
+@onready var player : Player
+@export var character : CharacterBody2D
 
-signal interrupt_state(new_state : EnemyState)
-
-func physics_update(event):
-	pass
-	
-func state_input(event):
-	pass
-
-func state_process(delta):
-	pass
-	
+func _ready():
+	for e in players:
+		player = e
+		
 func on_enter():
 	pass
 	
 func on_exit():
 	pass
+
+func transition():
+	pass
+	
+func _physics_process(delta):
+	transition()

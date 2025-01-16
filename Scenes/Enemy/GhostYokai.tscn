@@ -1,18 +1,19 @@
-[gd_scene load_steps=24 format=3 uid="uid://culc5ybvg43f6"]
+[gd_scene load_steps=29 format=3 uid="uid://culc5ybvg43f6"]
 
 [ext_resource type="Texture2D" uid="uid://i0vbevadhn1o" path="res://Img/Enemy/YokaiGhost.png" id="1_1e86v"]
-[ext_resource type="Script" path="res://Scripts/Entity/DetectPlayer.gd" id="3_0kwv4"]
 [ext_resource type="Script" path="res://Scripts/Entity/Ghost/ghost_yokai.gd" id="3_4akyg"]
+[ext_resource type="Script" path="res://Scripts/Entity/player_detector.gd" id="3_ilmdh"]
 [ext_resource type="Script" path="res://Scripts/Entity/Ghost/hurtbox.gd" id="3_iqsa6"]
-[ext_resource type="Script" path="res://Scripts/Entity/Attack.gd" id="4_bxwhp"]
-[ext_resource type="Script" path="res://Scripts/Entity/Roam.gd" id="4_gxafy"]
-[ext_resource type="Script" path="res://Scripts/Entity/EnemyStateMachine.gd" id="4_msdhk"]
-[ext_resource type="Script" path="res://Scripts/Entity/Chase.gd" id="5_vfqkx"]
-[ext_resource type="Script" path="res://Scenes/Enemy/Stun.gd" id="9_7bfs7"]
-[ext_resource type="Script" path="res://Scripts/Entity/EnemyDeath.gd" id="10_tha8q"]
+[ext_resource type="Script" path="res://Scripts/Entity/EnemyStateMachine.gd" id="4_v5dx4"]
+[ext_resource type="Script" path="res://Scripts/Entity/EnemyStates/roam.gd" id="5_q5fg2"]
+[ext_resource type="Script" path="res://Scripts/Entity/EnemyStates/stun.gd" id="6_1833h"]
+[ext_resource type="Script" path="res://Scripts/Entity/EnemyStates/death.gd" id="7_kvahj"]
+[ext_resource type="Script" path="res://Scripts/Entity/EnemyStates/follow.gd" id="9_g3q6c"]
+[ext_resource type="Script" path="res://Scripts/Player/Ui/debugger.gd" id="10_akwbh"]
+[ext_resource type="FontFile" uid="uid://by827vv0l31gc" path="res://Font/joystix monospace.otf" id="10_y81dr"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rswrw"]
-size = Vector2(16, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gh14y"]
+size = Vector2(8.25848, 18.1335)
 
 [sub_resource type="Animation" id="Animation_linfl"]
 length = 0.001
@@ -179,9 +180,9 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_4w5ib"]
 resource_name = "walk"
-length = 0.8
+length = 0.64
 loop_mode = 1
-step = 0.1
+step = 0.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -213,7 +214,7 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75),
+"times": PackedFloat32Array(0, 0.112226, 0.214263, 0.314263, 0.416301, 0.526489),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
@@ -231,107 +232,161 @@ _data = {
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8bq5d"]
 animation = &"death"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4yo8l"]
+animation = &"hit"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pq62p"]
 animation = &"walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2kaol"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7ynfb"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_odj6o"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1lcvi"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5xl4a"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_es5ut"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_kdfsv"]
+states/End/position = Vector2(601, 191)
+states/Start/position = Vector2(201, 91)
 states/death/node = SubResource("AnimationNodeAnimation_8bq5d")
-states/death/position = Vector2(541, 40)
+states/death/position = Vector2(457, 191)
+states/hit/node = SubResource("AnimationNodeAnimation_4yo8l")
+states/hit/position = Vector2(531, 91)
 states/walk/node = SubResource("AnimationNodeAnimation_pq62p")
-states/walk/position = Vector2(356, 100)
-transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_2kaol"), "walk", "death", SubResource("AnimationNodeStateMachineTransition_7ynfb")]
+states/walk/position = Vector2(361, 91)
+transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_2kaol"), "hit", "death", SubResource("AnimationNodeStateMachineTransition_odj6o"), "walk", "hit", SubResource("AnimationNodeStateMachineTransition_1lcvi"), "hit", "walk", SubResource("AnimationNodeStateMachineTransition_5xl4a"), "walk", "death", SubResource("AnimationNodeStateMachineTransition_es5ut")]
+graph_offset = Vector2(29, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lwedr"]
-radius = 63.5689
+radius = 51.0265
 
-[node name="Ghost" type="CharacterBody2D"]
+[node name="Ghost" type="CharacterBody2D" node_paths=PackedStringArray("state_machine", "animation_tree", "sprite", "stun_state", "follow_state", "death_state")]
+collision_layer = 8
 script = ExtResource("3_4akyg")
+state_machine = NodePath("EnemyStateMachine")
+animation_tree = NodePath("Animation/AnimationTree")
+sprite = NodePath("Animation/Sprite2D")
+stun_state = NodePath("EnemyStateMachine/Stun")
+follow_state = NodePath("EnemyStateMachine/Follow")
+death_state = NodePath("EnemyStateMachine/Death")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_rswrw")
+position = Vector2(-0.5, -1.03268)
+rotation = -3.14159
+scale = Vector2(1.81632, -1.10654)
+shape = SubResource("RectangleShape2D_gh14y")
 one_way_collision_margin = 0.0
 debug_color = Color(0.887787, 0, 0.142836, 0.694118)
 
 [node name="Animation" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Animation"]
-position = Vector2(2.38419e-07, -9)
+position = Vector2(-1, -9)
 scale = Vector2(0.880435, 0.847826)
 flip_h = true
 
-[node name="RayCastPlayer" type="RayCast2D" parent="Animation"]
+[node name="RayCastAttack" type="RayCast2D" parent="Animation"]
 position = Vector2(-9, 0)
 rotation = 0.802505
 exclude_parent = false
-target_position = Vector2(-32.5188, 33.9342)
+target_position = Vector2(-15.288, 15.8202)
 collision_mask = 2
 
 [node name="RayCastFloor" type="RayCast2D" parent="Animation"]
 position = Vector2(-9, 0)
-target_position = Vector2(0, 16)
+target_position = Vector2(0, 18)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Animation"]
 libraries = {
 "": SubResource("AnimationLibrary_1v1x1")
 }
-autoplay = "walk"
 
 [node name="AnimationTree" type="AnimationTree" parent="Animation"]
 tree_root = SubResource("AnimationNodeStateMachine_kdfsv")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="PlayerDetector" type="Area2D" parent="Animation"]
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("3_0kwv4")
+[node name="PlayerDetector" type="Area2D" parent="Animation" node_paths=PackedStringArray("sm", "follow_state", "roam_state")]
+visible = false
+collision_layer = 16
+collision_mask = 2
+monitorable = false
+script = ExtResource("3_ilmdh")
+sm = NodePath("../../EnemyStateMachine")
+follow_state = NodePath("../../EnemyStateMachine/Follow")
+roam_state = NodePath("../../EnemyStateMachine/Roam")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Animation/PlayerDetector"]
-scale = Vector2(0.877721, 0.860769)
+position = Vector2(7.10543e-15, 0)
+scale = Vector2(0.747534, 0.677167)
 shape = SubResource("CircleShape2D_lwedr")
 debug_color = Color(0.694118, 0.694118, 0.694118, 0.313726)
 
-[node name="Hurtbox" type="Node" parent="."]
+[node name="Hurtbox" type="Node" parent="." node_paths=PackedStringArray("animation_tree", "anim")]
 script = ExtResource("3_iqsa6")
+animation_tree = NodePath("../Animation/AnimationTree")
+anim = NodePath("../Animation/AnimationPlayer")
 
-[node name="EnemyStates" type="Node" parent="." node_paths=PackedStringArray("character", "current_state", "animation_tree")]
-script = ExtResource("4_msdhk")
+[node name="EnemyStateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "current_state", "animation_tree")]
+script = ExtResource("4_v5dx4")
 character = NodePath("..")
-current_state = NodePath("RoamState")
+current_state = NodePath("Roam")
 animation_tree = NodePath("../Animation/AnimationTree")
 
-[node name="RoamState" type="Node" parent="EnemyStates" node_paths=PackedStringArray("chase_state", "attack_state", "character")]
-script = ExtResource("4_gxafy")
-chase_state = NodePath("../ChaseState")
-attack_state = NodePath("../AttackState")
+[node name="Roam" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("floorcast", "anim", "follow_state", "character")]
+script = ExtResource("5_q5fg2")
+floorcast = NodePath("../../Animation/RayCastFloor")
+anim = NodePath("../../Animation")
+follow_state = NodePath("../Follow")
+has_dash = false
 character = NodePath("../..")
 
-[node name="ChaseState" type="Node" parent="EnemyStates" node_paths=PackedStringArray("character")]
-script = ExtResource("5_vfqkx")
-character = NodePath("../..")
-
-[node name="AttackState" type="Node" parent="EnemyStates" node_paths=PackedStringArray("character")]
-script = ExtResource("4_bxwhp")
-character = NodePath("../..")
-
-[node name="StunState" type="Node" parent="EnemyStates" node_paths=PackedStringArray("hurtbox", "Smachine", "death_state", "character")]
-script = ExtResource("9_7bfs7")
+[node name="Stun" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("hurtbox", "death_state", "last_state", "stun_timer", "character")]
+script = ExtResource("6_1833h")
 hurtbox = NodePath("../../Hurtbox")
-Smachine = NodePath("..")
-death_state = NodePath("../DeadState")
+death_state = NodePath("../Death")
+last_state = NodePath("../Roam")
+stun_timer = NodePath("../../Timers/StunTimer")
 can_move = false
+has_dash = false
 character = NodePath("../..")
 
-[node name="DeadState" type="Node" parent="EnemyStates" node_paths=PackedStringArray("character")]
-script = ExtResource("10_tha8q")
+[node name="Attack" type="Node" parent="EnemyStateMachine"]
+
+[node name="Death" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("character")]
+script = ExtResource("7_kvahj")
 can_move = false
+has_dash = false
 character = NodePath("../..")
 
-[connection signal="area_entered" from="Animation/PlayerDetector" to="Animation/PlayerDetector" method="_on_area_entered"]
-[connection signal="area_exited" from="Animation/PlayerDetector" to="Animation/PlayerDetector" method="_on_area_exited"]
+[node name="Follow" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("floorcast", "anim", "playercast", "roaming_state", "character")]
+script = ExtResource("9_g3q6c")
+floorcast = NodePath("../../Animation/RayCastFloor")
+anim = NodePath("../../Animation/Sprite2D")
+playercast = NodePath("../../Animation/RayCastAttack")
+roaming_state = NodePath("../Roam")
+character = NodePath("../..")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="StunTimer" type="Timer" parent="Timers"]
+wait_time = 0.1
+one_shot = true
+
+[node name="Debugger" type="Label" parent="." node_paths=PackedStringArray("chst")]
+offset_left = -65.0
+offset_top = -51.0
+offset_right = 47.0
+offset_bottom = -31.0
+theme_override_fonts/font = ExtResource("10_y81dr")
+text = "Text"
+script = ExtResource("10_akwbh")
+chst = NodePath("../EnemyStateMachine")
+
+[connection signal="animation_finished" from="Animation/AnimationTree" to="EnemyStateMachine/Death" method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="Animation/PlayerDetector" to="Animation/PlayerDetector" method="_on_body_entered"]
 [connection signal="body_exited" from="Animation/PlayerDetector" to="Animation/PlayerDetector" method="_on_body_exited"]
+[connection signal="timeout" from="Timers/StunTimer" to="EnemyStateMachine/Stun" method="_on_stun_timer_timeout"]

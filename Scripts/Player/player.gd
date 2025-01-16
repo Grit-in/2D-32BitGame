@@ -27,8 +27,6 @@ func _ready():
 	animation_tree.active = true
 # delta is the current frame time aka at 30FPS ≈ 1/30 ≈ 0.0333s etc.
 func _physics_process(delta: float) -> void:
-	#BG COLOR
-	RenderingServer.set_default_clear_color(Color.SKY_BLUE)
 	
 	_apply_gravity(delta)
 	
@@ -40,15 +38,15 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, friction * delta)
 	
 	
-	move_and_slide()	
+	move_and_slide()
 	update_animation_parameters()
 	update_facing_side()
 	
 
 func update_facing_side():
-	if direction.x >= 0:
+	if direction.x > 0:
 		sprite.flip_h = false
-	else:
+	elif direction.x < 0:
 		sprite.flip_h = true
 		
 func update_animation_parameters():

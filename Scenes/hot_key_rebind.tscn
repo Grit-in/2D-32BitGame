@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://c26buikmivm5a"]
+
+[ext_resource type="Script" path="res://Scripts/MenuScripts/hot_key_rebind.gd" id="1_7riqg"]
+[ext_resource type="FontFile" uid="uid://by827vv0l31gc" path="res://Font/joystix monospace.otf" id="2_xkvho"]
+
+[node name="HotKeyRebind" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7riqg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 80.0
+offset_top = -20.0
+offset_right = 592.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.129412, 0.784314, 0.937255, 1)
+theme_override_font_sizes/font_size = 20
+text = "Action
+"
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.129412, 0.784314, 0.937255, 1)
+theme_override_fonts/font = ExtResource("2_xkvho")
+text = "ACTION_KEY"
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="HBoxContainer/Button" to="." method="_on_button_toggled"]

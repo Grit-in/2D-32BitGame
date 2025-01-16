@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://degdsyvw7fosr"]
+
+[ext_resource type="Script" path="res://Scripts/MenuScripts/lang_button.gd" id="1_xkyda"]
+[ext_resource type="FontFile" uid="uid://by827vv0l31gc" path="res://Font/joystix monospace.otf" id="2_wlw5b"]
+
+[node name="LangButton" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xkyda")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 0
+offset_left = -73.0
+offset_top = 39.0
+offset_right = 55.0
+offset_bottom = 67.0
+theme_override_colors/font_hover_color = Color(0.129412, 0.784314, 0.937255, 1)
+theme_override_fonts/font = ExtResource("2_wlw5b")
+theme_override_font_sizes/font_size = 14
+text = "Language"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

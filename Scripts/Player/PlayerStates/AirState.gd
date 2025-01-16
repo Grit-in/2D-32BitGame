@@ -21,15 +21,18 @@ var jump_buffered : bool = false
 @export_category("animation_vars")
 @export var landing_animation : String = "jump_end"
 @export var djump_animation : String = "double_jump"
+@export var jump_animation : String = "jump"
 @export var dash_animation : String = "dash"
 @export var attack_animation : String = "attack"
 
 func _ready():
 	jb.wait_time = jump_buffer
 	
+func on_enter():
+	playback.travel(jump_animation)
+	
 func on_exit():
 	if next_state == ground_state :
-		playback.travel(landing_animation)
 		has_double_jump = false
 
 func state_input(event : InputEvent):
@@ -50,6 +53,8 @@ func double_jump():
 	has_double_jump = false
 
 func dash():
+	if character.velocity.x == 0:
+		return
 	if has_dash:
 		has_dash = false
 		has_double_jump = true
@@ -66,13 +71,13 @@ func on_dash_finish():
 	character.gravity_multiplier = 1
 	character.velocity.x = move_toward(character.velocity.x,0,500)
 	if not character.is_on_floor():
-		print(playback.get_current_node())
 		playback.travel("falling")
 		
 func state_process(_delta):
 	if character.is_on_floor():
 		next_state = ground_state
-
+		playback.travel(landing_animation)
+		
 func _on_dash_cooldown_timeout():
 	has_dash = true
 	ground_state.has_dash = true

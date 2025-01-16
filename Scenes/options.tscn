@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://7h2f6i7hnfvr"]
+
+[ext_resource type="Texture2D" uid="uid://dwd7is7ndsvhk" path="res://Img/BG/Title.png" id="1_ieohu"]
+[ext_resource type="Script" path="res://Scripts/MenuScripts/options.gd" id="1_mirxo"]
+[ext_resource type="PackedScene" uid="uid://b8i1ljwl63yaw" path="res://Scenes/controls_tab.tscn" id="4_4cwvo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_raqai"]
+texture = ExtResource("1_ieohu")
+modulate_color = Color(1, 1, 1, 0.435294)
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mirxo")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 600.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_raqai")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -48
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.172549, 0.792157, 0.909804, 1)
+theme_override_font_sizes/font_size = 32
+text = "Options"
+horizontal_alignment = 1
+
+[node name="ControlsTab" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_4cwvo")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_colors/font_hover_pressed_color = Color(0.129412, 0.784314, 0.937255, 1)
+theme_override_colors/font_hover_color = Color(0.129412, 0.784314, 0.937255, 1)
+theme_override_font_sizes/font_size = 24
+text = "Exit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

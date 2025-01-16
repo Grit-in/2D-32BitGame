@@ -7,6 +7,8 @@ class_name State
 var playback : AnimationNodeStateMachinePlayback
 var next_state : State
 
+signal interrupt_state(new_state : State)
+
 func dash():
 	pass
 	

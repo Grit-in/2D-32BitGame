@@ -10,7 +10,7 @@ var jumped := false
 @export_category("State")
 @export var air_state : AirState
 @export var attack_state : AttackState
-
+var last_state : State
 
 @export_category("timers")
 @export var ct : Timer
@@ -23,7 +23,9 @@ var jumped := false
 @export var dash_animation : String = "dash"
 @export var attack_animation : String = "attack"
 @export var falling_animation : String = "falling"
-	
+@export var walking_animation : String = "move"
+@export var landing_animation : String = "jump_end"
+
 func _ready():
 	ct.wait_time = coyote_timer
 	dcd.wait_time = dash_timer
@@ -32,6 +34,11 @@ func state_process(_delta):
 	if !character.is_on_floor():
 		ct.start()
 
+func on_enter():
+	playback.travel(walking_animation)
+
+func on_exit():
+	last_state = next_state
 func state_input(event : InputEvent):
 	if event.is_action_pressed("move_jump"):
 		_jump()
@@ -51,6 +58,8 @@ func _jump():
 	playback.travel(jump_animation)
 
 func dash():
+	if character.velocity.x == 0:
+		return
 	if has_dash:
 		has_dash = false
 		dcd.start()
