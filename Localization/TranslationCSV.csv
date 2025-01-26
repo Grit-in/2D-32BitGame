@@ -1,0 +1,20 @@
+﻿key,en,es,fr,de,pr,jp,man,can,rus,srp
+TEST_BUTTON,test,,,,,てすと,,,,tests
+LEFT_KEY,Left,Izquierda,Gauche,Links,,左,,,Левый,Levo
+RIGHT_KEY,Right,Bien,Droite,Rechts,,右,,,Верно,Desno
+JUMP_KEY,Jump,Saltar,Saut,Sprung,,飛ぶ,,,Прыжок,Skok
+DASH_KEY,Dash,Estrellarse,Dash,Ausweichen,,ダッシュ,,,Бросаться,Deš
+ATTACK_KEY,Attack,Ataque,Attaque,Angriff ,,攻撃,,,Атака,Napad
+RESET_KEY,Reset to default,Restablecer configuración,Reset,Standard,,設定のリセット,,,Перезагрузить,Vrati na pocetna podesanja
+CONTROL_KEY,Controls,Controles,Contrôles,Tastenbelegung,,コントロール,,,Опция,Opcije
+SOUND_KEY,Sound,Sonido,Son,Audio,,サウンド,,,Звук,Zvuk
+GRAPHICS_KEY,Graphics,Gráficos,Graphique,Grafik,,グラフィックス,,,Графика,Grafika
+LANGUAGE_KEY,Language,Idioma,Langage,Sprachauswahl,,言語,,,Язык,Jezik
+SAVE_KEY,Save settings,Guardar configuración,Sauvegarde,Speichern,,設定の保存,,,Сохранить настройки,Sacuvaj podesavanja
+EXIT_KEY,EXIT,SALIDA,Quitter,Zurück,,出口,,,Выход,Izlaz
+NEWGAME_KEY,New Game,Nuevo juego,Nouvelle Partie ,Neues Spiel,,始める,,,Новая игра,Nova igra
+CONTINUE_KEY,Continue,Continuar,Continuer,Fortfahren,,続ける,,,Продолжить игру,Nastavi Igru
+OPTIONS_KEY,Options,Opciones,Option,Einstellungen,,設定,,,Опция,Podesavanja
+QUIT_KEY,Quit Game,Abandonar,Quitter le jeu,Spiel verlassen,,ゲーム終了,,,Выход,Izadji
+OPTITLE_KEY,Options,Opciones,Choix,Einstellungen,,設定,,,Опция,Opcije
+,,,,,,,,,,

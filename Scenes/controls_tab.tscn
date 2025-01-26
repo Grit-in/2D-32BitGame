@@ -15,22 +15,24 @@ grow_vertical = 2
 script = ExtResource("1_ihoac")
 
 [node name="TabContainer" type="TabContainer" parent="."]
+custom_minimum_size = Vector2(500, 50)
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 54.0
 offset_top = 62.0
-offset_right = -54.0
+offset_right = -56.0
 offset_bottom = -62.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0.129412, 0.784314, 0.937255, 1)
+theme_override_fonts/font = ExtResource("2_ljrtd")
 tab_alignment = 1
 current_tab = 0
 
 [node name="CONTROL_KEY" type="TabBar" parent="TabContainer"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 metadata/_tab_index = 0
 

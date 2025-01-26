@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://h36bc4jy1pcv"]
+
+[ext_resource type="FontFile" uid="uid://by827vv0l31gc" path="res://Font/joystix monospace.otf" id="1_6cl6w"]
+
+[resource]
+Button/colors/font_hover_color = Color(0.129412, 0.784314, 0.937255, 1)
+Button/colors/font_outline_color = Color(0.129412, 0.784314, 0.937255, 0.486275)
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_6cl6w")

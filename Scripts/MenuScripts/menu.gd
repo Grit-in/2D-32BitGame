@@ -13,10 +13,13 @@ func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 	
 var jp = "jp"
-var last = "en"
+var last = "en"	
+
 func _ready():
-	last = TranslationServer.get_locale()
+	
+	last = ConfigFileHandler.load_language_settings()
 	TranslationServer.set_locale(last)
-		
+	if last == "de":
+		pass
 func _on_options_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/options.tscn")

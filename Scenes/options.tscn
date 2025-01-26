@@ -46,7 +46,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.172549, 0.792157, 0.909804, 1)
 theme_override_font_sizes/font_size = 32
-text = "Options"
+text = "OPTITLE_KEY"
 horizontal_alignment = 1
 
 [node name="ControlsTab" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_4cwvo")]
@@ -61,6 +61,6 @@ size_flags_vertical = 8
 theme_override_colors/font_hover_pressed_color = Color(0.129412, 0.784314, 0.937255, 1)
 theme_override_colors/font_hover_color = Color(0.129412, 0.784314, 0.937255, 1)
 theme_override_font_sizes/font_size = 24
-text = "Exit"
+text = "EXIT_KEY"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
