@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8i1ljwl63yaw"]
+[gd_scene load_steps=7 format=3 uid="uid://b8i1ljwl63yaw"]
 
-[ext_resource type="Script" path="res://Scripts/MenuScripts/controls_tab.gd" id="1_ihoac"]
+[ext_resource type="Script" path="res://Scripts/MenuScripts/Options/controls_tab.gd" id="1_ihoac"]
 [ext_resource type="FontFile" uid="uid://by827vv0l31gc" path="res://Font/joystix monospace.otf" id="2_ljrtd"]
-[ext_resource type="PackedScene" uid="uid://c26buikmivm5a" path="res://Scenes/hot_key_rebind.tscn" id="2_nq56f"]
-[ext_resource type="PackedScene" uid="uid://degdsyvw7fosr" path="res://Scenes/lang_button.tscn" id="3_g77xx"]
+[ext_resource type="PackedScene" uid="uid://c26buikmivm5a" path="res://Scenes/Options/hot_key_rebind.tscn" id="2_nq56f"]
+[ext_resource type="PackedScene" uid="uid://degdsyvw7fosr" path="res://Scenes/Options/lang_button.tscn" id="3_g77xx"]
+[ext_resource type="PackedScene" uid="uid://hid3tqrwnqx8" path="res://Scenes/Options/resolution_btn.tscn" id="5_hc3tm"]
+
+[sub_resource type="Theme" id="Theme_67inj"]
 
 [node name="ControlsTab" type="Control"]
 layout_mode = 3
@@ -29,9 +32,10 @@ grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0.129412, 0.784314, 0.937255, 1)
 theme_override_fonts/font = ExtResource("2_ljrtd")
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 
 [node name="CONTROL_KEY" type="TabBar" parent="TabContainer"]
+visible = false
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 metadata/_tab_index = 0
@@ -136,7 +140,6 @@ text = "label 1
 "
 
 [node name="GRAPHICS_KEY" type="TabBar" parent="TabContainer"]
-visible = false
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
@@ -149,40 +152,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
+theme_override_constants/margin_top = 300
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/GRAPHICS_KEY/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 32
-alignment = 1
+theme = SubResource("Theme_67inj")
 
-[node name="Label" type="Label" parent="TabContainer/GRAPHICS_KEY/MarginContainer/VBoxContainer"]
+[node name="ResolutionBtn3" parent="TabContainer/GRAPHICS_KEY/MarginContainer/VBoxContainer" instance=ExtResource("5_hc3tm")]
 layout_mode = 2
-text = "label 1
-"
-
-[node name="Label2" type="Label" parent="TabContainer/GRAPHICS_KEY/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "label 1
-"
-
-[node name="Label3" type="Label" parent="TabContainer/GRAPHICS_KEY/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "label 1
-"
-
-[node name="Label4" type="Label" parent="TabContainer/GRAPHICS_KEY/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "label 1
-"
-
-[node name="Label5" type="Label" parent="TabContainer/GRAPHICS_KEY/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "label 1
-"
 
 [node name="LANGUAGE_KEY" type="TabBar" parent="TabContainer"]
 visible = false

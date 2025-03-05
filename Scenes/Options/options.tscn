@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://7h2f6i7hnfvr"]
 
 [ext_resource type="Texture2D" uid="uid://dwd7is7ndsvhk" path="res://Img/BG/Title.png" id="1_ieohu"]
-[ext_resource type="Script" path="res://Scripts/MenuScripts/options.gd" id="1_mirxo"]
-[ext_resource type="PackedScene" uid="uid://b8i1ljwl63yaw" path="res://Scenes/controls_tab.tscn" id="4_4cwvo"]
+[ext_resource type="Script" path="res://Scripts/MenuScripts/Options/options.gd" id="1_mirxo"]
+[ext_resource type="PackedScene" uid="uid://b8i1ljwl63yaw" path="res://Scenes/Options/controls_tab.tscn" id="4_4cwvo"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_raqai"]
 texture = ExtResource("1_ieohu")
@@ -18,9 +18,12 @@ grow_vertical = 2
 script = ExtResource("1_mirxo")
 
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_right = 800.0
-offset_bottom = 600.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_raqai")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

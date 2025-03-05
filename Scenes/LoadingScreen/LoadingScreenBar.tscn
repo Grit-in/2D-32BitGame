@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://ujxiqcvh0rdd"]
 
-[ext_resource type="Script" path="res://Scripts/MenuScripts/loading_screen_bar.gd" id="1_s4tcg"]
+[ext_resource type="Script" path="res://Scripts/MenuScripts/Options/loading_screen_bar.gd" id="1_s4tcg"]
 [ext_resource type="Texture2D" uid="uid://del2la8hl0d08" path="res://Img/Ui/Loading.png" id="1_xotpt"]
 [ext_resource type="FontFile" uid="uid://by827vv0l31gc" path="res://Font/joystix monospace.otf" id="3_5ohjd"]
 

@@ -49,6 +49,8 @@ func updateUi() -> void:
 func _on_button_pressed():
 	change_language(langcode)
 	
+# Ugly ass looking "switch casae" unlucky but it is what it is sets the translation
+# to the on_click button
 func change_language(code):
 		
 	match langcode:

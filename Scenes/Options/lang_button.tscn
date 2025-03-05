@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://degdsyvw7fosr"]
 
-[ext_resource type="Script" path="res://Scripts/MenuScripts/lang_button.gd" id="1_xkyda"]
+[ext_resource type="Script" path="res://Scripts/MenuScripts/Options/lang_button.gd" id="1_xkyda"]
 [ext_resource type="FontFile" uid="uid://by827vv0l31gc" path="res://Font/joystix monospace.otf" id="2_wlw5b"]
 
 [node name="LangButton" type="Control"]

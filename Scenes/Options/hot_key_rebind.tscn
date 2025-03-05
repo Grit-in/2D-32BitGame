@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c26buikmivm5a"]
 
-[ext_resource type="Script" path="res://Scripts/MenuScripts/hot_key_rebind.gd" id="1_7riqg"]
+[ext_resource type="Script" path="res://Scripts/MenuScripts/Options/hot_key_rebind.gd" id="1_7riqg"]
 [ext_resource type="FontFile" uid="uid://by827vv0l31gc" path="res://Font/joystix monospace.otf" id="2_xkvho"]
 
 [node name="HotKeyRebind" type="Control"]

@@ -1,0 +1,75 @@
+[gd_scene load_steps=2 format=3 uid="uid://hid3tqrwnqx8"]
+
+[ext_resource type="Script" path="res://Scripts/MenuScripts/Options/graphics.gd" id="1_m2d2n"]
+
+[node name="ResolutionBtn" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m2d2n")
+
+[node name="Aspect_label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 54.0
+offset_top = 114.0
+offset_right = 194.0
+offset_bottom = 137.0
+text = "ASPECTRATIO_KEY"
+
+[node name="Aspectiratio_list" type="OptionButton" parent="."]
+custom_minimum_size = Vector2(140, 23)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = -104.0
+offset_right = 11.0
+offset_bottom = -81.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Res_label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 57.0
+offset_top = 197.0
+offset_right = 197.0
+offset_bottom = 220.0
+text = "RESOLUTION_KEY"
+
+[node name="Res_list" type="OptionButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -131.0
+offset_top = -186.0
+offset_right = 9.0
+offset_bottom = -163.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Fullscreen_label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 57.0
+offset_top = 258.0
+offset_right = 190.0
+offset_bottom = 281.0
+text = "FULLSCREEN_KEY"
+
+[node name="Fullscreencheck" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 256.0
+offset_right = 354.0
+offset_bottom = 280.0
+
+[connection signal="item_selected" from="Aspectiratio_list" to="." method="_on_aspectiratio_list_item_selected"]
+[connection signal="item_selected" from="Res_list" to="." method="_on_res_list_item_selected"]

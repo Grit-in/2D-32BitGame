@@ -741,13 +741,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mbrqd")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 1.0
-offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_kqbie")
@@ -830,11 +830,11 @@ text = "QUIT_KEY"
 script = SubResource("GDScript_2lbqi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(400, 367)
-scale = Vector2(4.95327, 3.91369)
+position = Vector2(399.355, 298.938)
+scale = Vector2(5.00806, 5.01771)
 sprite_frames = SubResource("SpriteFrames_8r1cs")
 autoplay = "default"
-frame_progress = 0.501649
+frame_progress = 0.00605898
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
