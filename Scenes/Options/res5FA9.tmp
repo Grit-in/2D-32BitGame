@@ -27,10 +27,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -130.0
-offset_top = -187.0
-offset_right = 10.0
-offset_bottom = -164.0
+offset_left = -129.0
+offset_top = -104.0
+offset_right = 11.0
+offset_bottom = -81.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -49,27 +49,27 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -130.0
-offset_top = -96.0
-offset_right = 10.0
-offset_bottom = -73.0
+offset_left = -131.0
+offset_top = -186.0
+offset_right = 9.0
+offset_bottom = -163.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Fullscreen_label" type="Label" parent="."]
 layout_mode = 1
-offset_left = 65.0
-offset_top = 290.0
-offset_right = 198.0
-offset_bottom = 313.0
+offset_left = 57.0
+offset_top = 258.0
+offset_right = 190.0
+offset_bottom = 281.0
 text = "FULLSCREEN_KEY"
 
 [node name="Fullscreencheck" type="CheckButton" parent="."]
 layout_mode = 0
-offset_left = 328.0
-offset_top = 288.0
-offset_right = 372.0
-offset_bottom = 312.0
+offset_left = 310.0
+offset_top = 256.0
+offset_right = 354.0
+offset_bottom = 280.0
 
 [connection signal="item_selected" from="Aspectiratio_list" to="." method="_on_aspectiratio_list_item_selected"]
 [connection signal="item_selected" from="Res_list" to="." method="_on_res_list_item_selected"]

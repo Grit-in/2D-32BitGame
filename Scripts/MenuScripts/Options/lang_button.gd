@@ -10,7 +10,6 @@ var langNames = ["English","Français","Deutsch","Español","Português",
 var langCode = ["en","fr","jp","de","es","pr","man","can","srp","rus"]
 
 func _ready():
-	print(ConfigFileHandler.load_language_settings())
 	TranslationServer.set_locale("en")
 	#When getting input ignores anything that isnt action
 	set_process_unhandled_input(false)

@@ -1,8 +1,8 @@
 extends Control
 
 var dummy_asp : String = "16:9"
-@onready var asp_list : OptionButton = %Aspectiratio_list
-@onready var res_list : OptionButton = %Res_list
+@onready var asp_list : OptionButton = $Aspectiratio_list
+@onready var res_list : OptionButton = $Res_list 
 
 @onready var resolutions : Dictionary = {
 	"16:9": {
@@ -29,11 +29,20 @@ var dummy_asp : String = "16:9"
 
 func _ready():
 	for aspect_ratio in resolutions.keys():
-		print(typeof(aspect_ratio))
+		asp_list.add_item(aspect_ratio)
+	
+	for res in resolutions.get(dummy_asp):
+		res_list.add_item(res)
 
 func _on_aspectiratio_list_item_selected(index):
-	pass # Replace with function body.
+	print("selected item " + asp_list.get_item_text(index))
+	_fill_resolution_bar(asp_list.get_item_text(index))
 
-
+func _fill_resolution_bar(res : String) -> void:
+	res_list.clear()
+	dummy_asp = res
+	for resolution in resolutions.get(res):
+		res_list.add_item(resolution)
+		
 func _on_res_list_item_selected(index):
 	pass # Replace with function body.
