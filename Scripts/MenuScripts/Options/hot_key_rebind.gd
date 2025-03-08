@@ -3,12 +3,15 @@ class_name HotKeyRebind
 
 @onready var label : Label = $HBoxContainer/Label
 @onready var button : Button = $HBoxContainer/Button
+
 var is_remapping = false
 var action_to_remap
 var remaping_button
+
 @export var action_name : String =  "move_left"
 @onready var new_font : Font = preload("res://Font/LanaPixel.ttf")
 @onready var def_font : Font = preload("res://Font/joystix monospace.otf")
+
 func _ready():
 	TranslationServer.set_locale(ConfigFileHandler.load_language_settings())
 	if TranslationServer.get_locale() == "jp" or TranslationServer.get_locale() == "can" or TranslationServer.get_locale() == "man":

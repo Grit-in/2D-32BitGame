@@ -17,8 +17,9 @@ func _ready():
 		config.set_value("keybinds","dash","Shift")
 		config.set_value("keybinds","attack","H")
 		
-		config.set_value("video","fullscreen",true)
-		config.set_value("video","screen_shake",false)
+		config.set_value("video","fullscreen",false)
+		config.set_value("video","aspect_ratio","4:3")
+		config.set_value("video","resolution","800x600")
 		
 		config.set_value("language","language","en")
 		
@@ -41,7 +42,6 @@ func load_video_settings():
 	return video_settings
 
 func save_language_settings(key : String, value):
-	print(key + " " + value)
 	config.set_value("language",key,value)
 	config.save(SETTINGS_FILE_PATH)
 

@@ -11,65 +11,54 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_m2d2n")
 
-[node name="Aspect_label" type="Label" parent="."]
+[node name="ResBtnMargin" type="MarginContainer" parent="."]
 layout_mode = 1
-offset_left = 54.0
-offset_top = 114.0
-offset_right = 194.0
-offset_bottom = 137.0
-text = "ASPECTRATIO_KEY"
-
-[node name="Aspectiratio_list" type="OptionButton" parent="."]
-custom_minimum_size = Vector2(140, 23)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -130.0
-offset_top = -187.0
-offset_right = 10.0
-offset_bottom = -164.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 160
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 160
 
-[node name="Res_label" type="Label" parent="."]
-layout_mode = 1
-offset_left = 57.0
-offset_top = 197.0
-offset_right = 197.0
-offset_bottom = 220.0
+[node name="Labels" type="HBoxContainer" parent="ResBtnMargin"]
+layout_mode = 2
+theme_override_constants/separation = 140
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResBtnMargin/Labels"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Res_label" type="Label" parent="ResBtnMargin/Labels/VBoxContainer"]
+layout_mode = 2
 text = "RESOLUTION_KEY"
 
-[node name="Res_list" type="OptionButton" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -130.0
-offset_top = -96.0
-offset_right = 10.0
-offset_bottom = -73.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Fullscreen_label" type="Label" parent="."]
-layout_mode = 1
-offset_left = 65.0
-offset_top = 290.0
-offset_right = 198.0
-offset_bottom = 313.0
+[node name="Fullscreen_label" type="Label" parent="ResBtnMargin/Labels/VBoxContainer"]
+layout_mode = 2
 text = "FULLSCREEN_KEY"
 
-[node name="Fullscreencheck" type="CheckButton" parent="."]
-layout_mode = 0
-offset_left = 328.0
-offset_top = 288.0
-offset_right = 372.0
-offset_bottom = 312.0
+[node name="Aspect_label" type="Label" parent="ResBtnMargin/Labels/VBoxContainer"]
+layout_mode = 2
+text = "ASPECTRATIO_KEY"
 
-[connection signal="item_selected" from="Aspectiratio_list" to="." method="_on_aspectiratio_list_item_selected"]
-[connection signal="item_selected" from="Res_list" to="." method="_on_res_list_item_selected"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="ResBtnMargin/Labels"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Aspect_list" type="OptionButton" parent="ResBtnMargin/Labels/VBoxContainer2"]
+custom_minimum_size = Vector2(140, 23)
+layout_mode = 2
+
+[node name="Res_list" type="OptionButton" parent="ResBtnMargin/Labels/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Fullscreencheck" type="CheckButton" parent="ResBtnMargin/Labels/VBoxContainer2"]
+layout_mode = 2
+
+[connection signal="item_selected" from="ResBtnMargin/Labels/VBoxContainer2/Aspect_list" to="." method="_on_aspectiratio_list_item_selected"]
+[connection signal="item_selected" from="ResBtnMargin/Labels/VBoxContainer2/Res_list" to="." method="_on_res_list_item_selected"]
+[connection signal="button_down" from="ResBtnMargin/Labels/VBoxContainer2/Fullscreencheck" to="." method="_on_fullscreencheck_button_down"]
+[connection signal="button_up" from="ResBtnMargin/Labels/VBoxContainer2/Fullscreencheck" to="." method="_on_fullscreencheck_button_up"]
+[connection signal="toggled" from="ResBtnMargin/Labels/VBoxContainer2/Fullscreencheck" to="." method="_on_fullscreencheck_toggled"]

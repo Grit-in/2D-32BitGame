@@ -21,6 +21,7 @@ config/icon="res://icon.svg"
 SignalHp="*res://Scripts/Entity/on_health_changed.gd"
 ConfigFileHandler="*res://Scripts/MenuScripts/ConfigFileHandler.gd"
 LoadingScreen="*res://Scenes/LoadingScreen/loading_screen.tscn"
+Helper="*res://Scripts/MenuScripts/helper.gd"
 
 [display]
 
