@@ -2,7 +2,8 @@
  ## Description
  2D Platformer made in Godot 4 engine.
  All the pictures are from the current development mode.
- 
+ # Artist
+   https://x.com/Noiluzdog
 ### Main menu:
   ![image](https://github.com/user-attachments/assets/4656c586-6f40-4107-9700-e65c51936c6e)
 ### Options:
